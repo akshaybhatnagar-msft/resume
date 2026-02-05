@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone", // For Azure deployment
+  output: "export", // Static export for Cloudflare Pages
   images: {
-    unoptimized: false,
-    formats: ["image/webp", "image/avif"],
+    unoptimized: true, // Required for static export
   },
+  // Trailing slashes for cleaner URLs on static hosts
+  trailingSlash: true,
 };
 
 export default nextConfig;
