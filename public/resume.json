@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Akshay Bhatnagar",
+    "label": "Partner Engineer (L68) at Microsoft",
+    "image": "https://akshaybhatnagar.dev/profile-v6.png",
+    "email": "akshay.bhatnagar@outlook.com",
+    "url": "https://akshaybhatnagar.dev",
+    "summary": "Partner-level engineer at Microsoft with over 10 years of experience driving high-impact AI and infrastructure initiatives. Progressed from L61 to L68, leading cross-functional teams and architecting systems that serve millions of users. Expert in LLMs, reinforcement learning, and building production-grade AI platforms.",
+    "location": {
+      "city": "Redmond",
+      "region": "Washington",
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "akshaybhatnagar-msft",
+        "url": "https://github.com/akshaybhatnagar-msft"
+      },
+      {
+        "network": "LinkedIn",
+        "url": "https://www.linkedin.com/in/akshay-bhatnagar-b17b1114/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Microsoft",
+      "position": "Partner Engineer (L68)",
+      "url": "https://microsoft.com",
+      "startDate": "2023-01-01",
+      "summary": "Leading AI infrastructure initiatives across Microsoft's GenAI platforms, driving strategic technical decisions for enterprise-scale systems.",
+      "highlights": [
+        "Architected Copilot for Finance integration serving Fortune 500 clients",
+        "Led Sydney backend services with Claude integration for enhanced reasoning",
+        "Pioneered GRPO-based trade promotion validation systems"
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "position": "Principal Engineer (L66)",
+      "url": "https://microsoft.com",
+      "startDate": "2020-01-01",
+      "endDate": "2022-12-31",
+      "summary": "Drove technical strategy for ML platform infrastructure, establishing patterns adopted across multiple product teams.",
+      "highlights": [
+        "Built Libre Researcher platform for autonomous research workflows",
+        "Scaled inference infrastructure to handle 10M+ daily requests",
+        "Established constitutional AI guidelines for enterprise deployments"
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "position": "Senior Engineer (L63)",
+      "url": "https://microsoft.com",
+      "startDate": "2016-01-01",
+      "endDate": "2019-12-31",
+      "summary": "Core contributor to Azure AI services, building foundational components for Microsoft's cloud ML offerings.",
+      "highlights": [
+        "Developed core ML pipeline orchestration systems",
+        "Contributed to Azure Cognitive Services APIs",
+        "Built real-time model serving infrastructure"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "level": "Expert",
+      "keywords": ["Python", "TypeScript", "C#", "C++", "Go"]
+    },
+    {
+      "name": "AI & Machine Learning",
+      "level": "Expert",
+      "keywords": ["Large Language Models", "Reinforcement Learning", "Constitutional AI", "Model Fine-tuning", "GRPO", "RLHF"]
+    },
+    {
+      "name": "Cloud & Infrastructure",
+      "level": "Expert",
+      "keywords": ["Azure", "Container Apps", "Kubernetes", "AWS", "Terraform", "Docker"]
+    },
+    {
+      "name": "APIs & Tools",
+      "level": "Expert",
+      "keywords": ["Microsoft Graph APIs", "Claude API", "OpenAI APIs", "Git"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Copilot for Finance",
+      "description": "AI-powered financial analysis platform integrated into Microsoft 365, enabling natural language queries over enterprise financial data.",
+      "highlights": ["Fortune 500 clients", "Natural language queries", "Enterprise-grade"],
+      "keywords": ["Python", "Azure", "LLMs", "TypeScript"]
+    },
+    {
+      "name": "Sydney Backend Services",
+      "description": "Backend infrastructure for conversational AI with advanced reasoning capabilities and multi-model orchestration.",
+      "keywords": ["C#", "Azure", "Claude API", "Redis"]
+    },
+    {
+      "name": "Libre Researcher",
+      "description": "Autonomous research platform that combines web search, document analysis, and synthesis for deep research workflows.",
+      "keywords": ["Python", "GRPO", "TypeScript", "Azure"]
+    }
+  ],
+  "meta": {
+    "canonical": "https://akshaybhatnagar.dev/resume.json",
+    "version": "v1.0.0",
+    "lastModified": "2025-01-01"
+  }
+}
