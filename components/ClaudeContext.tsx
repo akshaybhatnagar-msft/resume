@@ -44,17 +44,23 @@ export default function ClaudeContext() {
     }
 
     // IntersectionObserver to trigger animation when terminal is visible
+    // Using higher threshold (0.6) and rootMargin to ensure user sees the animation
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasAnimatedOnce) {
             setHasAnimatedOnce(true);
-            // Run the loading animation for initial view
-            runLoadingAnimation();
+            // Small delay to ensure the terminal is fully in view before animating
+            setTimeout(() => {
+              runLoadingAnimation();
+            }, 100);
           }
         });
       },
-      { threshold: 0.3 }
+      {
+        threshold: 0.5,  // Trigger when 50% of terminal is visible
+        rootMargin: "-50px 0px"  // Shrink the viewport bounds so it triggers later
+      }
     );
 
     if (terminalRef.current) {

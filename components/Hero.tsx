@@ -44,16 +44,16 @@ export default function Hero() {
 
         {/* Title */}
         <div className="hero-title mb-6 opacity-0">
-          <p className="text-lg md:text-xl text-muted">
+          <p className="text-lg md:text-xl text-muted-light">
             {personal.title} @ {personal.company}
           </p>
-          <p className="text-base md:text-lg text-muted/70 mt-1">
+          <p className="text-base md:text-lg text-muted mt-1">
             {personal.tagline}
           </p>
         </div>
 
         {/* Bio */}
-        <p className="hero-bio text-base md:text-lg text-muted/80 max-w-xl mx-auto mb-10 leading-relaxed opacity-0">
+        <p className="hero-bio text-base md:text-lg text-muted max-w-xl mx-auto mb-10 leading-relaxed opacity-0">
           {personal.bio}
         </p>
 

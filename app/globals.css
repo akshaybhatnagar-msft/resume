@@ -5,17 +5,32 @@
    Inspired by claude.com/product/claude-code
    ==================================== */
 :root {
-  /* Colors - Claude Code Dark Theme */
-  --background: #0a0a0a;
-  --background-secondary: #1a1a1a;
-  --foreground: #f2f2f2;
-  --muted: #666666;
-  --muted-light: #999999;
-  --accent: #D97757;
-  --accent-hover: #e88968;
-  --border: #2a2a2a;
-  --border-light: #3a3a3a;
-  --card: #141414;
+  /* Colors - Claude Code Inspired Gray Palette
+     Using layered neutral grays with warm terracotta accent */
+
+  /* Backgrounds - Layered grays for depth */
+  --background: #191919;          /* gray-950: Main background */
+  --background-secondary: #232323; /* gray-900: Elevated surfaces */
+  --background-tertiary: #2a2a2a;  /* gray-850: Cards, modals */
+
+  /* Text */
+  --foreground: #f5f5f4;          /* gray-050: Primary text (warm white) */
+  --foreground-secondary: #e7e5e4; /* gray-100: Secondary text */
+
+  /* Muted text - Brighter to match Claude site */
+  --muted: #a1a1aa;               /* gray-400: Muted text (brighter) */
+  --muted-light: #d4d4d8;         /* gray-300: Light muted */
+
+  /* Accent - Claude's terracotta */
+  --accent: #C46849;              /* Warm terracotta from Claude */
+  --accent-hover: #d4785a;
+
+  /* Borders - Visible but subtle */
+  --border: #3f3f3f;              /* gray-700: Primary borders */
+  --border-light: #525252;        /* gray-600: Hover borders */
+
+  /* Cards */
+  --card: #1f1f1f;                /* Between bg and bg-secondary */
 
   /* Fonts - System Stack */
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -239,8 +254,8 @@ body {
    Selection
    ==================================== */
 ::selection {
-  background: rgba(217, 119, 87, 0.3);
-  color: white;
+  background: rgba(196, 104, 73, 0.35);
+  color: var(--foreground);
 }
 
 /* ====================================
