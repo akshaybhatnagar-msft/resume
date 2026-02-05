@@ -7,9 +7,9 @@ export const resumeData = {
     tagline: "AI Infrastructure & GenAI Platforms",
     bio: "Building the future of AI-powered enterprise solutions",
     email: "akshay.bhatnagar@outlook.com",
-    linkedin: "[YOUR_LINKEDIN_URL]",
+    linkedin: "https://www.linkedin.com/in/akshay-bhatnagar-b17b1114/",
     github: "akshaybhatnagar-msft",
-    twitter: "[YOUR_TWITTER_HANDLE]",
+    twitter: "AkshayBhat93430",
     profileImage: "/profile-v6.png",
   },
 

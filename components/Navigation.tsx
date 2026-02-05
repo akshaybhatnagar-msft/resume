@@ -5,10 +5,10 @@ import { resumeData } from "@/data/resume";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "About", href: "#about" },
+  { label: "CLAUDE.md", href: "#claude-context" },
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
+  { label: "Sessions", href: "#sessions" },
   { label: "Contact", href: "#contact" },
 ];
 
