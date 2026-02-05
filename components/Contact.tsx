@@ -54,18 +54,18 @@ export default function Contact() {
     <section id="contact" className="section-padding">
       <div className="container">
         {/* Section heading */}
-        <div ref={headingRef} className="text-center mb-16 opacity-0">
+        <div ref={headingRef} className="text-center mb-12 opacity-0">
           <span className="section-label">Contact</span>
           <h2 className="section-title">{contact.heading}</h2>
-          <p className="text-lg text-muted/80 max-w-xl mx-auto mt-4 font-light">
+          <p className="text-muted max-w-lg mx-auto mt-3">
             {contact.subheading}
           </p>
         </div>
 
-        {/* Contact links */}
+        {/* Contact links - Grid layout for equal widths */}
         <div
           ref={linksRef}
-          className="flex flex-wrap justify-center gap-4 md:gap-6 max-w-3xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto"
         >
           {socialLinks.map((link) => {
             const Icon = link.icon;
@@ -75,20 +75,20 @@ export default function Contact() {
                 href={link.href}
                 target={link.name !== "Email" ? "_blank" : undefined}
                 rel={link.name !== "Email" ? "noopener noreferrer" : undefined}
-                className="contact-link group flex items-center gap-3 px-6 py-4 rounded-xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-accent/40 hover:bg-card/80 transition-all duration-300 opacity-0"
+                className="contact-link group flex items-center gap-3 px-4 py-4 rounded-xl bg-card border border-border hover:border-border-light transition-all duration-150 opacity-0"
               >
-                <div className="p-2 rounded-lg bg-accent/10 text-accent group-hover:bg-accent group-hover:text-background transition-colors">
+                <div className="p-2 rounded-lg bg-background-secondary text-muted group-hover:text-foreground transition-colors">
                   <Icon className="w-5 h-5" />
                 </div>
-                <div className="text-left">
-                  <p className="text-xs text-muted uppercase tracking-wider">
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs text-muted mb-0.5">
                     {link.name}
                   </p>
-                  <p className="text-foreground font-medium text-sm">
+                  <p className="text-foreground text-sm truncate">
                     {link.label}
                   </p>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-muted opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all ml-auto" />
+                <ArrowUpRight className="w-4 h-4 text-muted opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
               </a>
             );
           })}

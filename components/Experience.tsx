@@ -30,10 +30,10 @@ export default function Experience() {
   const { experience } = resumeData;
 
   return (
-    <section id="experience" className="section-padding bg-card/30">
+    <section id="experience" className="section-padding">
       <div className="container">
         {/* Section heading */}
-        <div ref={headingRef} className="mb-16 opacity-0">
+        <div ref={headingRef} className="mb-12 opacity-0">
           <span className="section-label">Experience</span>
           <h2 className="section-title">Career Journey</h2>
         </div>
@@ -41,57 +41,54 @@ export default function Experience() {
         {/* Timeline */}
         <div ref={timelineRef} className="relative">
           {/* Timeline line */}
-          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-accent/50 to-transparent" />
+          <div className="absolute left-0 md:left-6 top-0 bottom-0 w-px bg-border" />
 
           {experience.map((job) => (
             <div key={job.company} className="relative">
               {/* Company header */}
-              <div className="ml-8 md:ml-20 mb-8 flex flex-wrap items-center gap-4">
-                <div className="absolute left-0 md:left-8 w-4 h-4 -translate-x-1/2 rounded-full bg-accent border-4 border-background" />
-                <div className="flex items-center gap-2 text-accent">
-                  <Building2 className="w-5 h-5" />
-                  <span className="text-xl font-semibold">{job.company}</span>
+              <div className="ml-6 md:ml-16 mb-6 flex flex-wrap items-center gap-3">
+                <div className="absolute left-0 md:left-6 w-3 h-3 -translate-x-1/2 rounded-full bg-foreground" />
+                <div className="flex items-center gap-2 text-foreground">
+                  <Building2 className="w-4 h-4 text-muted" />
+                  <span className="font-medium">{job.company}</span>
                 </div>
-                <div className="flex items-center gap-2 text-muted text-sm">
-                  <MapPin className="w-4 h-4" />
+                <div className="flex items-center gap-1.5 text-muted text-sm">
+                  <MapPin className="w-3.5 h-3.5" />
                   <span>{job.location}</span>
                 </div>
-                <div className="flex items-center gap-2 text-muted text-sm">
-                  <Calendar className="w-4 h-4" />
+                <div className="flex items-center gap-1.5 text-muted text-sm">
+                  <Calendar className="w-3.5 h-3.5" />
                   <span>{job.period}</span>
                 </div>
               </div>
 
               {/* Roles */}
-              <div className="ml-8 md:ml-20 space-y-8 mb-16">
+              <div className="ml-6 md:ml-16 space-y-4 mb-12">
                 {job.roles.map((role, roleIndex) => (
                   <div
                     key={roleIndex}
-                    className="experience-card relative p-6 md:p-8 rounded-xl bg-card/60 border border-border/50 backdrop-blur-sm hover:border-accent/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5 opacity-0"
+                    className="experience-card relative p-5 rounded-xl bg-card border border-border hover:border-border-light transition-colors duration-150 opacity-0"
                   >
-                    {/* Role connector line */}
-                    <div className="absolute -left-[52px] md:-left-[52px] top-8 w-6 h-px bg-border/50" />
-
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
-                      <h3 className="text-xl md:text-2xl font-semibold text-foreground">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                      <h3 className="text-lg font-medium text-foreground">
                         {role.title}
                       </h3>
-                      <span className="text-sm text-accent font-medium px-3 py-1 rounded-full bg-accent/10 w-fit">
+                      <span className="text-sm text-muted">
                         {role.period}
                       </span>
                     </div>
 
-                    <p className="text-muted/90 mb-6 leading-relaxed">
+                    <p className="text-muted mb-4 text-sm leading-relaxed">
                       {role.description}
                     </p>
 
-                    <ul className="space-y-3">
+                    <ul className="space-y-2">
                       {role.achievements.map((achievement, achIndex) => (
                         <li
                           key={achIndex}
-                          className="flex items-start gap-3 text-foreground/80"
+                          className="flex items-start gap-2 text-sm text-foreground/80"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 flex-shrink-0" />
+                          <span className="w-1 h-1 rounded-full bg-muted mt-2 flex-shrink-0" />
                           <span>{achievement}</span>
                         </li>
                       ))}

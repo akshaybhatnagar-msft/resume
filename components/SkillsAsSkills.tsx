@@ -8,7 +8,6 @@ import {
   Code2,
   Cpu,
   ChevronDown,
-  Zap,
   Server,
   Users,
 } from "lucide-react";
@@ -28,7 +27,7 @@ const skills: Skill[] = [
     icon: Cpu,
     trigger: ["AI platform", "ML systems", "inference", "model serving"],
     description:
-      "Design and implement production-grade AI infrastructure including model serving, inference optimization, and distributed training systems. Expert in scaling AI systems to millions of users.",
+      "Design and implement production-grade AI infrastructure including model serving, inference optimization, and distributed training systems.",
     capabilities: [
       "Design high-throughput inference pipelines",
       "Optimize model serving latency and cost",
@@ -84,7 +83,7 @@ const skills: Skill[] = [
     icon: Code2,
     trigger: ["Python", "TypeScript", "C#", "React", "Next.js"],
     description:
-      "Full-stack development across multiple languages and frameworks. Primary expertise in Python and TypeScript, with strong C# and systems programming skills.",
+      "Full-stack development across multiple languages and frameworks. Primary expertise in Python and TypeScript, with strong C# skills.",
     capabilities: [
       "Build production React/Next.js apps",
       "Design Python ML pipelines",
@@ -115,35 +114,32 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
 
   return (
     <div
-      className="skill-card group relative p-6 rounded-xl bg-card/60 border border-border/50 backdrop-blur-sm hover:border-accent/40 transition-all duration-300 opacity-0"
-      style={{ animationDelay: `${index * 0.1}s` }}
+      className="skill-card group relative p-5 rounded-xl bg-card border border-border hover:border-border-light transition-colors duration-150 opacity-0"
+      style={{ animationDelay: `${index * 0.08}s` }}
     >
       {/* Skill header */}
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-lg bg-accent/10 text-accent group-hover:bg-accent group-hover:text-background transition-colors">
+          <div className="p-2 rounded-lg bg-background-secondary text-muted group-hover:text-foreground transition-colors">
             <Icon className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="font-mono text-lg font-semibold text-foreground">
+            <h3 className="font-mono text-sm font-medium text-foreground">
               {skill.name}
             </h3>
-            <div className="flex items-center gap-1 mt-1">
-              <Zap className="w-3 h-3 text-accent" />
-              <span className="text-xs text-muted">
-                {skill.proficiency}% proficiency
-              </span>
-            </div>
+            <span className="text-xs text-muted">
+              {skill.proficiency}%
+            </span>
           </div>
         </div>
       </div>
 
       {/* Trigger keywords */}
-      <div className="flex flex-wrap gap-1.5 mb-4">
+      <div className="flex flex-wrap gap-1.5 mb-3">
         {skill.trigger.map((t, i) => (
           <span
             key={i}
-            className="px-2 py-0.5 rounded-md bg-accent/10 text-accent text-xs font-mono"
+            className="px-2 py-0.5 rounded-md bg-background-secondary text-muted text-xs"
           >
             {t}
           </span>
@@ -151,14 +147,14 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
       </div>
 
       {/* Description */}
-      <p className="text-muted/80 text-sm leading-relaxed mb-4">
+      <p className="text-muted text-sm leading-relaxed mb-3">
         {skill.description}
       </p>
 
       {/* Expandable capabilities */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="flex items-center gap-2 text-sm text-accent hover:text-accent/80 transition-colors"
+        className="flex items-center gap-1 text-sm text-muted hover:text-foreground transition-colors"
       >
         <span>Capabilities</span>
         <ChevronDown
@@ -169,17 +165,17 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
       </button>
 
       <div
-        className={`overflow-hidden transition-all duration-300 ${
-          isExpanded ? "max-h-48 mt-3" : "max-h-0"
+        className={`overflow-hidden transition-all duration-200 ${
+          isExpanded ? "max-h-40 mt-3" : "max-h-0"
         }`}
       >
-        <ul className="space-y-2">
+        <ul className="space-y-1.5">
           {skill.capabilities.map((cap, i) => (
             <li
               key={i}
-              className="flex items-start gap-2 text-sm text-foreground/80"
+              className="flex items-start gap-2 text-sm text-foreground/70"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0" />
+              <span className="w-1 h-1 rounded-full bg-muted mt-2 flex-shrink-0" />
               {cap}
             </li>
           ))}
@@ -187,9 +183,9 @@ function SkillCard({ skill, index }: { skill: Skill; index: number }) {
       </div>
 
       {/* Proficiency bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-border/30 rounded-b-xl overflow-hidden">
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-border overflow-hidden rounded-b-xl">
         <div
-          className="h-full bg-gradient-to-r from-accent to-accent-secondary transition-all duration-1000"
+          className="h-full bg-foreground/30"
           style={{ width: `${skill.proficiency}%` }}
         />
       </div>
@@ -207,8 +203,8 @@ export default function SkillsAsSkills() {
     }
     if (gridRef.current) {
       createStaggeredReveal(gridRef.current, ".skill-card", {
-        stagger: 0.1,
-        y: 40,
+        stagger: 0.08,
+        y: 30,
       });
     }
   }, []);
@@ -217,32 +213,22 @@ export default function SkillsAsSkills() {
     <section id="skills" className="section-padding">
       <div className="container">
         {/* Section heading */}
-        <div ref={headingRef} className="mb-12 opacity-0">
+        <div ref={headingRef} className="mb-10 opacity-0">
           <span className="section-label font-mono">/skills</span>
-          <h2 className="section-title">SKILLS.md</h2>
-          <p className="text-muted/80 mt-4 max-w-2xl text-lg">
-            Skills documented like Claude Code's skill system.
-            Each skill has triggers, descriptions, and capabilities.
+          <h2 className="section-title">Skills</h2>
+          <p className="text-muted mt-3 max-w-xl">
+            Technical capabilities documented like Claude Code's skill system.
           </p>
         </div>
 
         {/* Skills grid */}
         <div
           ref={gridRef}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {skills.map((skill, index) => (
             <SkillCard key={skill.name} skill={skill} index={index} />
           ))}
-        </div>
-
-        {/* Usage hint */}
-        <div className="mt-12 p-4 rounded-lg bg-card/50 border border-border/50 max-w-2xl mx-auto">
-          <p className="text-sm text-muted/60 text-center font-mono">
-            <span className="text-accent">Tip:</span> Mention any trigger keyword
-            to engage that skill. Example: "Help with{" "}
-            <span className="text-accent">LLM integration</span>"
-          </p>
         </div>
       </div>
     </section>

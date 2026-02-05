@@ -29,32 +29,30 @@ export default function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border/50 py-4"
-          : "bg-transparent py-6"
+          ? "bg-background/90 backdrop-blur-md border-b border-border py-3"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="container flex items-center justify-between">
         {/* Logo / Name */}
         <a
           href="#"
-          className="font-display font-bold text-lg tracking-tight hover:text-accent transition-colors"
+          className="font-medium text-foreground hover:text-muted transition-colors"
         >
           {personal.name.split(" ")[0]}
-          <span className="text-accent">.</span>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-muted hover:text-foreground transition-colors relative group"
+              className="text-sm text-muted hover:text-foreground transition-colors"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300" />
             </a>
           ))}
         </nav>
@@ -75,17 +73,17 @@ export default function Navigation() {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border/50 transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full left-0 right-0 bg-background border-b border-border transition-all duration-200 overflow-hidden ${
           isMobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="container py-6 flex flex-col gap-4">
+        <nav className="container py-4 flex flex-col gap-1">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-lg font-medium text-muted hover:text-foreground transition-colors py-2"
+              className="text-base text-muted hover:text-foreground transition-colors py-2"
             >
               {link.label}
             </a>

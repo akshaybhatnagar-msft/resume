@@ -250,12 +250,12 @@ export default function ClaudeContext() {
     >
       <div className="container">
         {/* Section heading */}
-        <div ref={headingRef} className="mb-12 text-center opacity-0">
-          <span className="section-label flex items-center justify-center">
-            <ClaudeIcon size={24} className="text-[#D97757]" />
+        <div ref={headingRef} className="mb-10 text-center opacity-0">
+          <span className="section-label flex items-center justify-center mb-4">
+            <ClaudeIcon size={28} className="text-[#D97757]" />
           </span>
           <h2 className="section-title">CLAUDE.md</h2>
-          <p className="text-muted/80 mt-4 max-w-2xl mx-auto text-lg">
+          <p className="text-muted mt-3 max-w-xl mx-auto">
             My resume as a context file. Click to explore.
           </p>
         </div>
@@ -263,7 +263,7 @@ export default function ClaudeContext() {
         {/* Interactive terminal */}
         <div ref={terminalRef} className="w-full opacity-0">
           {/* Context buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-6">
+          <div className="flex flex-wrap justify-center gap-2 mb-6">
             {contextButtons.map((btn) => {
               const Icon = btn.icon;
               return (
@@ -271,10 +271,10 @@ export default function ClaudeContext() {
                   key={btn.id}
                   onClick={() => handleContextChange(btn.id)}
                   disabled={loadingPhase !== null}
-                  className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm transition-all duration-150 ${
                     activeContext === btn.id
-                      ? "bg-accent text-background shadow-lg shadow-accent/25 scale-105"
-                      : "bg-card/60 text-muted hover:text-foreground hover:bg-card border border-border/50 hover:scale-102"
+                      ? "bg-foreground text-background"
+                      : "bg-transparent text-muted hover:text-foreground border border-border hover:border-border-light"
                   } ${loadingPhase ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   <Icon className="w-4 h-4" />
@@ -285,36 +285,34 @@ export default function ClaudeContext() {
           </div>
 
           {/* Terminal window */}
-          <div className="rounded-2xl overflow-hidden border border-border/50 bg-[#0d1117] shadow-2xl shadow-black/50">
+          <div className="rounded-xl overflow-hidden border border-border bg-background">
             {/* Terminal header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-border/30">
-              <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between px-4 py-3 bg-card border-b border-border">
+              <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1.5">
-                  <Circle className="w-3 h-3 text-red-500 fill-red-500" />
-                  <Circle className="w-3 h-3 text-yellow-500 fill-yellow-500" />
-                  <Circle className="w-3 h-3 text-green-500 fill-green-500" />
+                  <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                  <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                  <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
                 </div>
-                <span className="ml-3 text-sm text-muted/60 font-mono">
-                  claude — {activeContext}.md
+                <span className="text-sm text-muted font-mono">
+                  {activeContext}.md
                 </span>
               </div>
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={handleCopy}
-                  className="p-1.5 rounded hover:bg-white/10 transition-colors text-muted/60 hover:text-white"
-                  title="Copy to clipboard"
-                >
-                  {copied ? (
-                    <Check className="w-4 h-4 text-green-500" />
-                  ) : (
-                    <Copy className="w-4 h-4" />
-                  )}
-                </button>
-              </div>
+              <button
+                onClick={handleCopy}
+                className="p-1.5 rounded-md hover:bg-background-secondary transition-colors text-muted hover:text-foreground"
+                title="Copy to clipboard"
+              >
+                {copied ? (
+                  <Check className="w-4 h-4 text-green-500" />
+                ) : (
+                  <Copy className="w-4 h-4" />
+                )}
+              </button>
             </div>
 
             {/* Terminal content */}
-            <div className="p-6 font-mono text-sm min-h-[550px] max-h-[600px] overflow-y-auto">
+            <div className="p-6 font-mono text-sm min-h-[500px] max-h-[550px] overflow-y-auto bg-background">
               {/* Loading state - inline like Claude Code */}
               {loadingPhase && !showContent && (
                 <div className="flex items-start gap-3">
@@ -355,19 +353,14 @@ export default function ClaudeContext() {
             </div>
 
             {/* Terminal footer */}
-            <div className="px-4 py-2 bg-[#161b22] border-t border-border/30 flex items-center justify-between text-xs text-muted/40">
+            <div className="px-4 py-2.5 bg-card border-t border-border flex items-center justify-between text-xs text-muted">
               <span className="flex items-center gap-2">
-                <span className={`w-2 h-2 rounded-full ${loadingPhase ? "bg-[#D97757] animate-pulse" : "bg-green-500"}`} />
-                {loadingPhase ? "Claude is thinking..." : "Ready"}
+                <span className={`w-1.5 h-1.5 rounded-full ${loadingPhase ? "bg-accent animate-pulse" : "bg-green-500"}`} />
+                {loadingPhase ? "Processing..." : "Ready"}
               </span>
-              <span>Markdown • UTF-8 • AI-Friendly</span>
+              <span className="text-muted/60">Markdown</span>
             </div>
           </div>
-
-          {/* Hint */}
-          <p className="text-center text-sm text-muted/50 mt-4 font-mono">
-            Also available at <code className="text-accent/70 bg-accent/10 px-1.5 py-0.5 rounded">/CLAUDE.md</code>
-          </p>
         </div>
       </div>
     </section>

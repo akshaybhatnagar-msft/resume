@@ -1,27 +1,37 @@
 @import "tailwindcss";
 
 /* ====================================
-   Design System Variables
+   Claude Code Design System
+   Inspired by claude.com/product/claude-code
    ==================================== */
 :root {
-  /* Colors - Dark Theme */
-  --background: #050508;
-  --foreground: #e8e8ed;
-  --muted: #8b8b9a;
-  --accent: #3b82f6;
-  --accent-secondary: #8b5cf6;
-  --border: #1f1f28;
-  --card: #0c0c12;
+  /* Colors - Claude Code Dark Theme */
+  --background: #0a0a0a;
+  --background-secondary: #1a1a1a;
+  --foreground: #f2f2f2;
+  --muted: #666666;
+  --muted-light: #999999;
+  --accent: #D97757;
+  --accent-hover: #e88968;
+  --border: #2a2a2a;
+  --border-light: #3a3a3a;
+  --card: #141414;
 
-  /* Fonts */
-  --font-display: "Plus Jakarta Sans", var(--font-geist-sans), system-ui,
-    sans-serif;
-  --font-body: var(--font-geist-sans), system-ui, sans-serif;
+  /* Fonts - System Stack */
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
 
   /* Spacing */
-  --section-padding-y: clamp(80px, 12vh, 140px);
-  --container-padding-x: clamp(20px, 5vw, 40px);
-  --container-max: 1200px;
+  --section-padding-y: clamp(64px, 10vh, 120px);
+  --container-padding-x: clamp(24px, 5vw, 48px);
+  --container-max: 1100px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }
 
 /* ====================================
@@ -29,14 +39,17 @@
    ==================================== */
 @theme inline {
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
   --color-accent: var(--accent);
-  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-hover: var(--accent-hover);
   --color-border: var(--border);
+  --color-border-light: var(--border-light);
   --color-card: var(--card);
   --font-sans: var(--font-body);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-mono);
 }
 
 /* ====================================
@@ -54,6 +67,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
+  font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -78,26 +92,20 @@ body {
 /* ====================================
    Typography
    ==================================== */
-.font-display {
-  font-family: var(--font-display);
-}
-
 .section-label {
   display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
 }
 
 .section-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.2;
   color: var(--foreground);
 }
 
@@ -119,74 +127,10 @@ body {
 }
 
 /* ====================================
-   Hero Section
+   Hero Section - Clean & Minimal
    ==================================== */
 .hero-section {
-  background: radial-gradient(
-      ellipse 80% 80% at 50% -20%,
-      rgba(59, 130, 246, 0.15),
-      transparent
-    ),
-    var(--background);
-}
-
-/* Animated gradient orbs */
-.gradient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.4;
-}
-
-.gradient-orb-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
-  top: -200px;
-  left: -100px;
-  animation: float 20s ease-in-out infinite;
-}
-
-.gradient-orb-2 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(
-    circle,
-    rgba(139, 92, 246, 0.25),
-    transparent 70%
-  );
-  bottom: -100px;
-  right: -100px;
-  animation: float 25s ease-in-out infinite reverse;
-}
-
-.gradient-orb-3 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.2),
-    transparent 70%
-  );
-  top: 50%;
-  right: 20%;
-  animation: float 18s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  25% {
-    transform: translate(30px, -30px) scale(1.05);
-  }
-  50% {
-    transform: translate(-20px, 20px) scale(0.95);
-  }
-  75% {
-    transform: translate(20px, 30px) scale(1.02);
-  }
+  background: var(--background);
 }
 
 /* ====================================
@@ -196,63 +140,79 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--card);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: transparent;
   border: 1px solid var(--border);
   color: var(--muted);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.18s ease;
 }
 
 .social-link:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
+  background: var(--background-secondary);
+  border-color: var(--border-light);
+  color: var(--foreground);
 }
 
 /* ====================================
-   Parallax Background
+   Cards & Containers
    ==================================== */
-.parallax-bg {
-  background: radial-gradient(
-    ellipse 100% 100% at 100% 0%,
-    rgba(59, 130, 246, 0.08),
-    transparent 50%
-  );
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.18s ease;
+}
+
+.card:hover {
+  border-color: var(--border-light);
 }
 
 /* ====================================
-   Skill Bars
+   Buttons
    ==================================== */
-.skill-bar {
-  position: relative;
-  overflow: hidden;
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: var(--foreground);
+  color: var(--background);
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.18s ease, transform 0.18s ease;
 }
 
-.skill-bar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transform: translateX(-100%);
+.btn-primary:hover {
+  opacity: 0.9;
 }
 
-.skill-bar:hover::before {
-  animation: shimmer 1.5s ease-in-out;
+.btn-primary:active {
+  transform: scale(0.98);
 }
 
-@keyframes shimmer {
-  100% {
-    transform: translateX(100%);
-  }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: transparent;
+  color: var(--foreground);
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--background-secondary);
+  border-color: var(--border-light);
 }
 
 /* ====================================
@@ -279,7 +239,7 @@ body {
    Selection
    ==================================== */
 ::selection {
-  background: rgba(59, 130, 246, 0.3);
+  background: rgba(217, 119, 87, 0.3);
   color: white;
 }
 
@@ -300,19 +260,6 @@ section {
 }
 
 /* ====================================
-   Noise Texture Overlay
-   ==================================== */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.02;
-  pointer-events: none;
-  z-index: 1000;
-}
-
-/* ====================================
    Claude Terminal Animations
    ==================================== */
 @keyframes fade-in {
@@ -328,4 +275,48 @@ body::before {
 
 .animate-fade-in {
   animation: fade-in 0.3s ease-out forwards;
+}
+
+/* ====================================
+   Terminal Window
+   ==================================== */
+.terminal {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+}
+
+.terminal-content {
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* ====================================
+   Links
+   ==================================== */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--foreground);
+}
+
+/* ====================================
+   Dividers
+   ==================================== */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 2rem 0;
 }

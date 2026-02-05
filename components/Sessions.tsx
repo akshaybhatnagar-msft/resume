@@ -2,14 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createScrollFadeIn, createStaggeredReveal } from "@/lib/animations";
-import { resumeData } from "@/data/resume";
 import {
   CheckCircle2,
   Circle,
   Clock,
   ChevronRight,
   Terminal,
-  Sparkles,
 } from "lucide-react";
 
 interface Session {
@@ -20,7 +18,6 @@ interface Session {
   context: string;
   outcomes: string[];
   tech: string[];
-  featured?: boolean;
 }
 
 const sessions: Session[] = [
@@ -37,7 +34,6 @@ const sessions: Session[] = [
       "95%+ query accuracy achieved",
     ],
     tech: ["Python", "Azure", "LLMs", "TypeScript"],
-    featured: true,
   },
   {
     id: "session-002",
@@ -52,7 +48,6 @@ const sessions: Session[] = [
       "Multi-model orchestration",
     ],
     tech: ["C#", "Azure", "Claude API", "Redis"],
-    featured: true,
   },
   {
     id: "session-003",
@@ -67,7 +62,6 @@ const sessions: Session[] = [
       "Core components open-sourced",
     ],
     tech: ["Python", "GRPO", "TypeScript", "Azure"],
-    featured: true,
   },
   {
     id: "session-004",
@@ -82,7 +76,6 @@ const sessions: Session[] = [
       "40% cost reduction",
     ],
     tech: ["Python", "Kubernetes", "TensorRT", "Prometheus"],
-    featured: false,
   },
   {
     id: "session-005",
@@ -97,7 +90,6 @@ const sessions: Session[] = [
       "Automated safety pipeline built",
     ],
     tech: ["Python", "PyTorch", "Evaluation Frameworks"],
-    featured: false,
   },
   {
     id: "session-006",
@@ -112,7 +104,6 @@ const sessions: Session[] = [
       "Learned Rust ecosystem",
     ],
     tech: ["Rust", "TypeScript", "Tauri"],
-    featured: false,
   },
 ];
 
@@ -122,14 +113,14 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
   return (
     <div
       className="session-card group relative opacity-0"
-      style={{ animationDelay: `${index * 0.1}s` }}
+      style={{ animationDelay: `${index * 0.08}s` }}
     >
       <div
         onClick={() => setIsExpanded(!isExpanded)}
-        className={`p-5 rounded-xl border backdrop-blur-sm cursor-pointer transition-all duration-300 ${
+        className={`p-5 rounded-xl border cursor-pointer transition-colors duration-150 ${
           isExpanded
-            ? "bg-card/80 border-accent/50"
-            : "bg-card/40 border-border/50 hover:border-accent/30"
+            ? "bg-card border-border-light"
+            : "bg-card border-border hover:border-border-light"
         }`}
       >
         {/* Session header */}
@@ -138,34 +129,28 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
             {/* Status indicator */}
             {session.status === "active" ? (
               <div className="relative">
-                <Circle className="w-4 h-4 text-green-500 fill-green-500" />
-                <span className="absolute inset-0 w-4 h-4 rounded-full bg-green-500 animate-ping opacity-50" />
+                <Circle className="w-3 h-3 text-green-500 fill-green-500" />
               </div>
             ) : (
-              <CheckCircle2 className="w-4 h-4 text-accent" />
+              <CheckCircle2 className="w-3 h-3 text-muted" />
             )}
 
             <div>
-              <div className="flex items-center gap-2">
-                <h3 className="font-semibold text-foreground">
-                  {session.title}
-                </h3>
-                {session.featured && (
-                  <Sparkles className="w-3.5 h-3.5 text-accent" />
-                )}
-              </div>
+              <h3 className="font-medium text-foreground text-sm">
+                {session.title}
+              </h3>
               <p className="text-xs text-muted font-mono">{session.id}</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-muted">
+          <div className="flex items-center gap-1.5 text-xs text-muted">
             <Clock className="w-3 h-3" />
             {session.period}
           </div>
         </div>
 
         {/* Context */}
-        <p className="text-sm text-muted/80 mb-3 line-clamp-2">
+        <p className="text-sm text-muted mb-3 line-clamp-2">
           {session.context}
         </p>
 
@@ -174,7 +159,7 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
           {session.tech.map((t, i) => (
             <span
               key={i}
-              className="px-2 py-0.5 rounded-md bg-border/30 text-muted text-xs font-mono"
+              className="px-2 py-0.5 rounded-md bg-background-secondary text-muted text-xs"
             >
               {t}
             </span>
@@ -182,7 +167,7 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
         </div>
 
         {/* Expand indicator */}
-        <div className="flex items-center gap-1 text-xs text-accent">
+        <div className="flex items-center gap-1 text-xs text-muted hover:text-foreground transition-colors">
           <ChevronRight
             className={`w-3 h-3 transition-transform ${
               isExpanded ? "rotate-90" : ""
@@ -193,20 +178,18 @@ function SessionCard({ session, index }: { session: Session; index: number }) {
 
         {/* Expanded outcomes */}
         <div
-          className={`overflow-hidden transition-all duration-300 ${
-            isExpanded ? "max-h-40 mt-4 pt-4 border-t border-border/30" : "max-h-0"
+          className={`overflow-hidden transition-all duration-200 ${
+            isExpanded ? "max-h-40 mt-4 pt-4 border-t border-border" : "max-h-0"
           }`}
         >
-          <p className="text-xs text-muted uppercase tracking-wider mb-2">
-            Outcomes
-          </p>
+          <p className="text-xs text-muted mb-2">Outcomes</p>
           <ul className="space-y-1.5">
             {session.outcomes.map((outcome, i) => (
               <li
                 key={i}
                 className="flex items-start gap-2 text-sm text-foreground/80"
               >
-                <CheckCircle2 className="w-3.5 h-3.5 text-green-500 mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-3 h-3 text-green-500 mt-0.5 flex-shrink-0" />
                 {outcome}
               </li>
             ))}
@@ -227,8 +210,8 @@ export default function Sessions() {
     }
     if (gridRef.current) {
       createStaggeredReveal(gridRef.current, ".session-card", {
-        stagger: 0.1,
-        y: 40,
+        stagger: 0.08,
+        y: 30,
       });
     }
   }, []);
@@ -237,27 +220,26 @@ export default function Sessions() {
   const completedSessions = sessions.filter((s) => s.status === "completed");
 
   return (
-    <section id="sessions" className="section-padding bg-card/30">
+    <section id="sessions" className="section-padding">
       <div className="container">
         {/* Section heading */}
-        <div ref={headingRef} className="mb-12 opacity-0">
+        <div ref={headingRef} className="mb-10 opacity-0">
           <span className="section-label flex items-center gap-2">
             <Terminal className="w-4 h-4" />
             Sessions
           </span>
-          <h2 className="section-title">SESSIONS.md</h2>
-          <p className="text-muted/80 mt-4 max-w-2xl text-lg">
-            Projects documented as completed sessions - with context, tech stack,
-            and measurable outcomes.
+          <h2 className="section-title">Projects</h2>
+          <p className="text-muted mt-3 max-w-xl">
+            Key projects documented as sessions with context, tech stack, and outcomes.
           </p>
         </div>
 
         {/* Active sessions */}
         {activeSessions.length > 0 && (
-          <div className="mb-12">
-            <h3 className="text-sm font-medium text-green-500 uppercase tracking-wider mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              Active Sessions ({activeSessions.length})
+          <div className="mb-10">
+            <h3 className="text-sm text-green-500 mb-4 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+              Active ({activeSessions.length})
             </h3>
             <div
               ref={gridRef}
@@ -272,9 +254,9 @@ export default function Sessions() {
 
         {/* Completed sessions */}
         <div>
-          <h3 className="text-sm font-medium text-muted uppercase tracking-wider mb-4 flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4" />
-            Completed Sessions ({completedSessions.length})
+          <h3 className="text-sm text-muted mb-4 flex items-center gap-2">
+            <CheckCircle2 className="w-3.5 h-3.5" />
+            Completed ({completedSessions.length})
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {completedSessions.map((session, index) => (

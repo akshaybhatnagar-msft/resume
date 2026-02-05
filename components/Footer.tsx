@@ -7,15 +7,15 @@ export default function Footer() {
   const { personal } = resumeData;
 
   return (
-    <footer className="py-8 border-t border-border/30">
+    <footer className="py-8 border-t border-border">
       <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted">
           <p>
-            &copy; {currentYear} {personal.name}. All rights reserved.
+            &copy; {currentYear} {personal.name}
           </p>
           <p className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            Open to opportunities
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+            Available
           </p>
         </div>
       </div>
